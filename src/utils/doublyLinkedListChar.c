@@ -315,3 +315,30 @@ void swapNodes(List *list, Node *nodo1, Node *nodo2)
         }
     }
 }
+
+int getPos(List *list, Node *nodo) {
+    Node *auxNodo;
+    int pos;
+    auxNodo = list->head;
+    pos = 0;
+    if (nodo == NULL) {
+        return -1;
+    }
+    while (auxNodo != nodo) {
+        pos++;
+        auxNodo = auxNodo->next;
+    }
+    return pos;
+}
+
+Node *getNodeByPos(List *list, int pos) {
+    Node *nodo;
+    int count;
+    nodo = list->head;
+    count = 0;
+    while (count < pos) {
+        count++;
+        nodo = nodo->next;
+    }
+    return nodo;
+}
