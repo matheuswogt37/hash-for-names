@@ -77,7 +77,7 @@ void getAllElements(HashTable *hashTable)
     for (int i = 0; i < HASH_SIZE; i++)
     {
         list = hashTable->col[i];
-        printf("%i - %i\n", ++i, list->size);
+        printf("%i - %i\n", (i + 1), list->size);
     }
     printf("\n");
 }
@@ -123,7 +123,7 @@ void freeHash(HashTable *hTable)
 int main()
 {
     FILE *fptr;
-    fptr = fopen("./data/test.txt", "r");
+    fptr = fopen("./data/nomes.txt", "r");
     char line[MAX_STRING_SIZE];
     HashTable *hTable;
     hTable = iniciateHash();
@@ -131,12 +131,11 @@ int main()
     while (fgets(line, MAX_STRING_SIZE, fptr))
     {
         hashInsert(line, hTable);
-        printf("%s\n", line);
     }
 
     getAllElements(hTable);
-    getElementsInCol(hTable, 47);
-    printList(hTable->col[46]);
+    // getElementsInCol(hTable, 47);
+    // printList(hTable->col[46]);
 
     fclose(fptr);
     freeHash(hTable);
