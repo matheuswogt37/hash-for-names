@@ -36,9 +36,15 @@ int stringToAscii(char data[MAX_STRING_SIZE])
 
 int hashFunction(char data[MAX_STRING_SIZE])
 {
-    int ascii = stringToAscii(data);
-    int hash;
-    hash = ascii % HASH_SIZE;
+    int hash = 7;
+    int size = strlen(data) - 1;
+    for (int i = 0; i < size; i++) {
+        hash = hash*31 + data[i];
+    }
+    if (hash < 0) {
+        hash *= -1;
+    }
+    hash = hash % HASH_SIZE;
     return hash;
 }
 

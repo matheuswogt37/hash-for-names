@@ -4,27 +4,20 @@
 
 int main()
 {
-    List *list;
-    list = allocList();
-    insertNodo(list, list->head, "capacete");
-    insertNodo(list, list->head, "abacate");
-    insertNodo(list, list->head, "trilha");
-    insertNodo(list, list->head, "debug");
-    // insertNodo(list, list->head, "cabra");
-    // insertNodo(list, list->head, "tez");
+    char data[20] = "SHARLITON";
+    int hash = 11;
+    int size = strlen(data);
+    for (int i = 0; i < size; i++) {
+        hash = hash*31 + data[i];
+        printf("\n%c -> hash: %i", data[i], hash);
+    }
+    printf("\n%s : %i\n", data, hash);
+    if (hash < 0) {
+        hash *= -1;
+    }
+    hash = hash % 53;
 
-    printList(list);
-    printf("\n");
-
-    // int res1 = isSmaller(list->tail, list->head);
-    // printf("\n%i\n", res1);
-
-    quickSort(list, 0, (list->size - 1));
-    // swapNodes(list, list->head, list->head);
-
-    printList(list);
-
-    printf("\nfoi");
+    printf("%i\n", hash);
 
     printf("\n");
     return 0;
