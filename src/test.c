@@ -1,23 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "utils/quickSortListChar.c"
+#include "hash.c"
 
 int main()
 {
-    char data[20] = "SHARLITON";
-    int hash = 11;
-    int size = strlen(data);
-    for (int i = 0; i < size; i++) {
-        hash = hash*31 + data[i];
-        printf("\n%c -> hash: %i", data[i], hash);
-    }
-    printf("\n%s : %i\n", data, hash);
-    if (hash < 0) {
-        hash *= -1;
-    }
-    hash = hash % 53;
+    HashTable *hashTable;
+    hashTable = iniciateHash();
 
-    printf("%i\n", hash);
+    hashInsert("jonas ", hashTable);
+    hashInsert("cabra ", hashTable);
+    hashInsert("leo ", hashTable);
+    hashInsert("barrack ", hashTable);
+
+    getAllElements(hashTable);
+
+    hashRemove("jonas ", hashTable);
+
+    getAllElements(hashTable);
+
+    printf("\nfoi");
 
     printf("\n");
     return 0;
